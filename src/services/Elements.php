@@ -2070,15 +2070,15 @@ class Elements extends Component
 
         if (!$element->propagating && !ElementHelper::isDraftOrRevision($element)) {
             // Update search index
-            Craft::$app->getQueue()->push(new UpdateSearchIndex([
-                'elementType' => get_class($element),
-                'elementId' => $element->id,
-                'siteId' => $propagate ? '*' : $element->siteId,
-            ]));
+            // Craft::$app->getQueue()->push(new UpdateSearchIndex([
+            //     'elementType' => get_class($element),
+            //     'elementId' => $element->id,
+            //     'siteId' => $propagate ? '*' : $element->siteId,
+            // ]));
 
-            // Delete any caches involving this element. (Even do this for new elements, since they
-            // might pop up in a cached criteria.)
-            Craft::$app->getTemplateCaches()->deleteCachesByElement($element);
+            // // Delete any caches involving this element. (Even do this for new elements, since they
+            // // might pop up in a cached criteria.)
+            // Craft::$app->getTemplateCaches()->deleteCachesByElement($element);
         }
 
         // Fire an 'afterSaveElement' event

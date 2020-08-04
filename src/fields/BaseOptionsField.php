@@ -436,7 +436,8 @@ abstract class BaseOptionsField extends Field implements PreviewableFieldInterfa
 
         foreach ($this->options as $option) {
             if (!isset($option['optgroup'])) {
-                $values[] = $option['value'];
+                $name = preg_replace(['/^[^_a-zA-Z]/', '/[^_a-zA-Z0-9]/'], '_', $option['value']);
+                $values[$name] = $option['value'];
             }
         }
 
